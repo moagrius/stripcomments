@@ -16,9 +16,9 @@ console.log( cs.strip(someString) );</pre>
 
 It's *intended* to be 100% effective - catching any valid comment, including:
 
-- var a = 10; // comment
-- var a = "http://www.github.com"; //
-- var a = function(arg /*, ...rest */)
+<pre>var a = 10; // comment
+var a = "http://www.github.com"; // more comments
+var a = function(arg /*, ...rest */)</pre>
 
 etc.
 
