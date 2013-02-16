@@ -1,11 +1,13 @@
 Simple JS parser to strip comments
 
+<pre>
 // this is a comment
 
 /* this
  * is a multiline
  * comment
 */
+</pre>
 
 Usage is simple - create an instance and call .strip(string) to get back the de-commented string...
 
