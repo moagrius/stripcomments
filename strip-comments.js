@@ -1,3 +1,5 @@
+"use strict";
+
 var CommentStripper = (function (window) {
 
     var SLASH = '/';
