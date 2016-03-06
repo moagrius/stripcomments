@@ -173,4 +173,4 @@ var CommentStripper = (function (window) {
 
     return window.CommentStripper = CommentStripper;
 
-})(window);
+})(typeof window == "undefined" ? global : window);
