@@ -10,8 +10,10 @@ var CommentStripper = (function (window) {
     var NEW_LINE = '\n';
     var CARRIAGE_RETURN = '\r';
 
-    var CommentStripper = function () {
-
+    var CommentStripper = function (options) {
+        if (options !== undefined) {
+            this.preserveNewlines = typeof options.preserveNewlines !== 'undefined' ? options.preserveNewlines : false;
+        }
     };
 
     CommentStripper.prototype = {
@@ -20,6 +22,7 @@ var CommentStripper = (function (window) {
         length: 0,
         position: 0,
         output: null,
+        preserveNewlines: false,
 
         getCurrentCharacter: function () {
             return this.string.charAt(this.position);
@@ -115,6 +118,11 @@ var CommentStripper = (function (window) {
                                 this.next();
                                 this.next();
                                 return;
+                            }
+                        }
+                        if (this.preserveNewlines) {
+                            if (this.getCurrentCharacter() == NEW_LINE || this.getCurrentCharacter() == CARRIAGE_RETURN) {
+                                this.add();
                             }
                         }
                     }
