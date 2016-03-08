@@ -1,3 +1,5 @@
+"use strict";
+
 var CommentStripper = (function (window) {
 
     var SLASH = '/';
@@ -18,6 +20,11 @@ var CommentStripper = (function (window) {
         length: 0,
         position: 0,
         output: null,
+        preserveNewlines: false,
+
+        setPreserveNewlines: function (preserveNewlines) {
+            this.preserveNewlines = preserveNewlines;
+        },
 
         getCurrentCharacter: function () {
             return this.string.charAt(this.position);
@@ -115,6 +122,11 @@ var CommentStripper = (function (window) {
                                 return;
                             }
                         }
+                        if (this.preserveNewlines) {
+                            if (this.getCurrentCharacter() == NEW_LINE || this.getCurrentCharacter() == CARRIAGE_RETURN) {
+                                this.add();
+                            }
+                        }
                     }
                 }
             }
@@ -171,6 +183,10 @@ var CommentStripper = (function (window) {
         });
     }
 
-    return window.CommentStripper = CommentStripper;
+    if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+        module.exports = CommentStripper;
+    } else {
+        return window.CommentStripper = CommentStripper;
+    }
 
-})(window);
+})(typeof window === 'undefined' ? global : window);
