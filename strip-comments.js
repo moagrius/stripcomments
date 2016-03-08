@@ -183,6 +183,10 @@ var CommentStripper = (function (window) {
         });
     }
 
-    return window.CommentStripper = CommentStripper;
+    if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+        module.exports = CommentStripper;
+    } else {
+        return window.CommentStripper = CommentStripper;
+    }
 
-})(typeof window == "undefined" ? global : window);
+})(typeof window === 'undefined' ? global : window);
