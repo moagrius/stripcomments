@@ -14,10 +14,9 @@ Usage is simple - create an instance and call .strip(string) to get back the de-
 <pre>var cs = new CommentStripper();
 console.log( cs.strip(someString) );</pre>
 
-Or specify an option to preserve all newlines within multiline comments (e.g. to support sourcemaps)...
+It's also possible to preserve all newlines within multiline comments (e.g. to support sourcemaps)...
 
-<pre>var cs = new CommentStripper({'preserveNewlines': true});
-console.log( cs.strip(someString) );</pre>
+<pre>cs.setPreserveNewlines(true);</pre>
 
 It's *intended* to be 100% effective - catching any valid comment, including:
 
